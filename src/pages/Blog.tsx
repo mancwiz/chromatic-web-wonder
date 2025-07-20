@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { allBlogPosts } from "@/data/blogPosts";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -154,6 +155,7 @@ const Blog = () => {
           )}
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

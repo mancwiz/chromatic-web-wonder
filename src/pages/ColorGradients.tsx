@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Copy, Heart, Download, ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 interface ColorGradientsProps {
   searchTerm: string;
@@ -408,7 +409,7 @@ const ColorGradients: React.FC<ColorGradientsProps> = ({ searchTerm, favorites, 
   };
 
   return (
-    <div className={`space-y-6 bg-white mt-16 ${isScrolling ? 'scrolling' : ''}`}>
+    <div className={`space-y-6 bg-background mt-16 ${isScrolling ? 'scrolling' : ''}`}>
 
         <Navbar/>
       {/* Controls */}
@@ -529,7 +530,7 @@ const ColorGradients: React.FC<ColorGradientsProps> = ({ searchTerm, favorites, 
                       onClick={() => onToggleFavorite(gradient.id)}
                       className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
                     >
-                      <Heart className={`w-4 h-4 ${favorites.includes(gradient.id) ? 'text-red-500 fill-current' : 'text-gray-400'}`} />
+                      {/* <Heart className={`w-4 h-4 ${favorites.includes(gradient.id) ? 'text-red-500 fill-current' : 'text-gray-400'}`} /> */}
                     </button>
                   </div>
                 </div>
@@ -570,7 +571,7 @@ const ColorGradients: React.FC<ColorGradientsProps> = ({ searchTerm, favorites, 
                     <button className={`p-2 rounded-lg transition-colors ${
                       isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100'
                     }`}>
-                      <Download className={`w-4 h-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
+                      {/* <Download className={`w-4 h-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} /> */}
                     </button>
                   </div>
                 </div>
@@ -694,6 +695,8 @@ const ColorGradients: React.FC<ColorGradientsProps> = ({ searchTerm, favorites, 
           Gradient CSS copied to clipboard!
         </div>
       )}
+
+      <Footer/>
     </div>
   );
 };

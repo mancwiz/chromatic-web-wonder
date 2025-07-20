@@ -1,24 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Palette, Droplets, Layers3, Blend, Menu, X } from 'lucide-react'
+import logo from '../assets/logo.png'
+import logoText from '../assets/logoText.png'
+import { CmiDefinations } from './CmiDefinations'
 
 const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
     <div>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/0 backdrop-blur-md border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-navbar backdrop-blur-md border-b border-border/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Palette className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                Color Magic
-              </span>
-            </Link>
+        <img
+          src={logo} // ✅ Update with your actual image file path (e.g., /assets/logo.png)
+          alt="Colorsmi Logo"
+          className=" h-16 object-contain"
+        />
+         {/* <img
+        src={logoText}
+        alt="Colorsmi Logo Text"
+        className="h-24 pt-1 object-contain"
+      /> */}
+        {/* <span className="text-xl font-bold text-primary">
+          Colorsmi
+        </span> */}
+      </Link>
+      <div className='mt-8'>
+
+      <CmiDefinations/>
+      </div>
+      
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">

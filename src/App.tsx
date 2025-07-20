@@ -52,7 +52,15 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  isDarkMode={isDarkMode}
+                  onToggleTheme={() => setIsDarkMode((prev) => !prev)}
+                />
+              }
+            />
             <Route
               path="/color-shades"
               element={

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import logoText from '../assets/textlogo.png';
+import logo from '../assets/logo.png';
+import textforlogo from '../assets/textforlogo.png'
+
 import { 
   Palette, 
   Layers3, 
@@ -20,12 +24,25 @@ import {
   Printer,
   Briefcase,
   Menu,
-  X
+  X,
+  Bot,
+  Earth,
+  BicepsFlexed,
+  Flower
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/navbar";
+import ThemeToggle from "../components/ThemeToggle";
+import { CmiDefinations } from "@/components/CmiDefinations";
+import MovingTagline from "@/components/MovingTagline";
 
-const Home = () => {
+
+interface HomeProps {
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
+
+const Home: React.FC<HomeProps> = ({ isDarkMode, onToggleTheme }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -57,12 +74,13 @@ const Home = () => {
     }
   ];
 
-  const stats = [
-    { number: "500K+", label: "Colors Generated", icon: Palette },
-    { number: "50K+", label: "Happy Designers", icon: Star },
-    { number: "1M+", label: "Downloads", icon: Download },
-    { number: "99%", label: "Satisfaction Rate", icon: CheckCircle }
-  ];
+const stats = [
+  { number: "95%", label: "Designers Felt Empowered", icon: Palette },
+  { number: "1M+", label: "AI-Generated Combinations", icon: Bot },
+  { number: "15s", label: "Avg. Time to First Color Pick", icon: Droplets }, // new unique stat
+  { number: "75+", label: "Countries Reached", icon: Earth },
+  { number: "99%", label: "Said: It Changed My Workflow", icon: Flower },
+];
 
   const benefits = [
     {
@@ -136,7 +154,7 @@ const Home = () => {
       <Navbar/>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-32">
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-mesh opacity-20 animate-gradient-move" 
              style={{ backgroundSize: '400% 400%' }} />
@@ -145,40 +163,57 @@ const Home = () => {
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Main Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-              <span className="bg-gradient-rainbow bg-clip-text text-transparent animate-gradient-move" 
-                   style={{ backgroundSize: '400% 400%' }}>
-                Color Magic
-              </span>
+               <div className="inline-flex items-center justify-center animate-bounce-subtle  mb-2">
+    <img
+      src={logoText}
+      alt="Colorsmi Logo Text"
+      className="max-h-20 sm:max-h-24 lg:max-h-28   object-contain"
+    />
+  </div>
               <br />
-              <span className="text-foreground">Starts Here</span>
+              {/* <CmiDefinations/> */}
+              {/* <span className="text-foreground font-poppins font-bold ">Colors <span className="bg-gradient-rainbow bg-clip-text text-transparent animate-gradient-move" 
+                   style={{ backgroundSize: '400% 400%' }}>
+                Make Impact
+              </span> </span> */}
+            <MovingTagline/>
             </h1>
+            {/* <MovingTagline/> */}
+            
 
             {/* Subtitle */}
-            <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-              Create stunning color palettes, generate perfect shades, design beautiful themes, 
-              and craft mesmerizing gradients. Everything you need for professional color design.
-            </p>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-rainbow opacity-20 blur-3xl animate-pulse" />
+              <p className="relative text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+                Discover endless possibilities with <span className="bg-gradient-primary bg-clip-text text-transparent font-bold">Colorsmi</span> - 
+                your ultimate companion for creating stunning color palettes, perfect shades, beautiful themes, 
+                and mesmerizing gradients that bring your designs to life.
+              </p>
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <Button 
                 size="lg" 
-                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 animate-pulse-glow"
+                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-10 py-6 group relative overflow-hidden"
                 asChild
               >
-                <Link to="/color-shades">
-                  Start Creating <ArrowRight className="ml-2 h-5 w-5" />
+                <Link to="/color-shades" className="flex items-center">
+                  <div className="absolute inset-0 bg-gradient-rainbow opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <span className="relative">Unleash Creativity</span>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-primary/50 hover:bg-primary/10 text-lg px-8 py-4"
+                className="border-primary/50 hover:bg-gradient-primary/10 hover:border-primary text-lg px-10 py-6 group transition-all duration-300"
                 asChild
               >
-                <Link to="/color-themes">
-                  Explore Themes
+                <Link to="/color-themes" className="flex items-center">
+                  <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  Explore Magic
                 </Link>
               </Button>
             </div>
@@ -255,11 +290,11 @@ const Home = () => {
         <div className="absolute inset-0 bg-background/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Trusted by Designers Worldwide</h2>
-            <p className="text-xl text-muted-foreground">Join thousands of creative professionals using our tools daily</p>
+            <h2 className="text-4xl font-bold mb-4">Trusted by Creators in 75+ Countries</h2>
+            <p className="text-xl text-muted-foreground">Join thousands of creative professionals using our tools daily<br/>Every day, designers craft stunning visuals, developers fine-tune UI/UX colors, entrepreneurs shape brand <br /> palettes, and creatives generate vibrant themes and gradients all using Colorsmi. </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-0">
             {stats.map((stat, index) => (
               <div 
                 key={stat.label}
@@ -320,7 +355,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Why Choose <span className="bg-gradient-secondary bg-clip-text text-transparent">Color Magic?</span>
+              Why Choose <span className="bg-gradient-secondary bg-clip-text text-transparent">colorsmi</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We've built the most comprehensive suite of color tools to streamline your design workflow.
@@ -436,16 +471,32 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 border-t border-border">
+      <footer className="py-16 border-t border-border bg-card/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-              Color Magic
-            </h3>
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <div className=" rounded-lg flex items-center justify-center">
+                <Link to="/" className="flex items-center space-x-2">
+        <img
+          src={logo} // ✅ Update with your actual image file path (e.g., /assets/logo.png)
+          alt="Colorsmi Logo"
+          className=" h-14 object-contain"
+        /> </Link>
+
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                <img
+      src={logoText}
+      alt="Colorsmi Logo Text"
+      className="max-h-10 sm:max-h-14 lg:max-h-10 -ml-3   object-contain"
+    />
+                
+              </h3>
+            </div>
             <p className="text-muted-foreground mb-8">
               Professional color tools for modern designers and developers.
             </p>
-            <div className="flex justify-center space-x-8">
+            <div className="flex justify-center space-x-8 mb-8">
               <Link to="/color-shades" className="text-muted-foreground hover:text-primary transition-colors">
                 Color Shades
               </Link>
@@ -459,11 +510,17 @@ const Home = () => {
                 Color Blog
               </Link>
             </div>
+            
+            <div className="flex justify-center items-center space-x-4 pt-8 border-t border-border">
+              <span className="text-muted-foreground">Theme:</span>
+              <ThemeToggle isDarkMode={isDarkMode} onToggle={onToggleTheme} />
+            </div>
           </div>
         </div>
       </footer>
     </div>
   );
 };
+
 
 export default Home;

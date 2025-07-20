@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Copy, Heart, Download, Eye, Grid, List, Check, Search, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Palette, Sparkles, Blend, Layers3, Droplets, Menu, X } from 'lucide-react';
 import { Link } from "react-router-dom";
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 interface ColorShadesProps {
   searchTerm: string;
@@ -250,7 +251,7 @@ const ColorShades: React.FC<ColorShadesProps> = ({ searchTerm, favorites, onTogg
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="space-y-6 bg-white mt-16">
+    <div className="space-y-6 bg-background mt-16">
       <Navbar />
       {/* Header Section */}
       <div
@@ -347,7 +348,7 @@ const ColorShades: React.FC<ColorShadesProps> = ({ searchTerm, favorites, onTogg
         </div>
 
         {/* Search Bar */}
-        <div className="relative mb-6">
+        {/* <div className="relative mb-6">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
@@ -359,7 +360,7 @@ const ColorShades: React.FC<ColorShadesProps> = ({ searchTerm, favorites, onTogg
                 : "bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500"
             }`}
           />
-        </div>
+        </div> */}
 
         {/* Range Controls */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -686,6 +687,7 @@ const ColorShades: React.FC<ColorShadesProps> = ({ searchTerm, favorites, onTogg
           Copied {copiedColor}!
         </div>
       )}
+      <Footer/>
     </div>
   );
 };

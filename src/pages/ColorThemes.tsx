@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Copy, Heart, Download, ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 interface ColorThemesProps {
   searchTerm: string;
@@ -359,7 +360,7 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
   const themesBoxRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <div className={`space-y-6 mt-16 bg-white ${isScrolling ? 'scrolling' : ''}`}>
+    <div className={`space-y-6 mt-16 bg-background ${isScrolling ? 'scrolling' : ''}`}>
 
 <Navbar/>
 
@@ -529,7 +530,7 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
                     <button className={`p-2 rounded-lg transition-colors ${
                       isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100'
                     }`}>
-                      <Download className={`w-4 h-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
+                      {/* <Download className={`w-4 h-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} /> */}
                     </button>
                   </div>
                 </div>
@@ -653,6 +654,8 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
           Theme CSS copied to clipboard!
         </div>
       )}
+
+      <Footer/>
     </div>
   );
 };
