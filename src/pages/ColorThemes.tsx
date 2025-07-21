@@ -17,7 +17,7 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
   const [currentPage, setCurrentPage] = useState(1);
   const [isScrolling, setIsScrolling] = useState(false);
   
-  const themesPerPage = 100;
+  const themesPerPage = 500;
 
   // Scrolling detection
   React.useEffect(() => {
@@ -367,22 +367,22 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
 
       {/* Controls */}
       <div className={`rounded-2xl p-6 shadow-lg transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-800' : 'bg-white'
+        isDarkMode ? 'bg-gray-900' : 'bg-white'
       }`}>
         <h2 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
           isDarkMode ? 'text-white' : 'text-gray-800'
         }`}>
-          Color Theme Generator
+          Theme Generator
           <span className={`text-sm font-normal ml-2 transition-colors duration-300 ${
             isDarkMode ? 'text-gray-400' : 'text-gray-500'
           }`}>
-            Infinite unique themes • 1,000,000+ combinations per category
+            {/* Infinite unique themes • 1,000,000+ combinations per category */}
           </span>
         </h2>
 
         {/* Color Count Selector */}
-        <div className="mb-6">
-          <label className={`block text-sm font-medium mb-3 transition-colors duration-300 ${
+        <div className="mb-6 ">
+          <label className={`block text-sm font-semibold mb-3 transition-colors duration-300 ${
             isDarkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
             Number of Colors in Theme
@@ -392,9 +392,9 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
               <button
                 key={count}
                 onClick={() => setColorCount(count)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                   colorCount === count
-                    ? 'bg-purple-500 text-white'
+                    ? 'bg-purple-600 text-white'
                     : isDarkMode
                       ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -408,22 +408,22 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
 
         {/* Category Selector */}
         <div className="mb-6">
-          <label className={`block text-sm font-medium mb-3 transition-colors duration-300 ${
+          <label className={`block text-sm font-semibold mb-3 transition-colors duration-300 ${
             isDarkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
             Theme Category
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 font-semibold">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`p-3 rounded-lg text-left transition-colors ${
+                className={`p-3 font-semibold rounded-lg text-left transition-colors ${
                   selectedCategory === category.id
-                    ? 'bg-purple-500 text-white'
+                    ? 'bg-purple-600 text-white'
                     : isDarkMode
                       ? 'bg-gray-700 hover:bg-gray-600 text-gray-300'
-                      : 'bg-gray-50 hover:bg-gray-100 text-gray-800'
+                      : 'bg-gray-50 hover:bg-gray-100 text-gray-900'
                 }`}
               >
                 <div className="font-medium text-sm">{category.label}</div>
@@ -450,7 +450,8 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
           <h3 className={`text-xl font-bold transition-colors duration-300 ${
             isDarkMode ? 'text-white' : 'text-gray-800'
           }`}>
-            {colorCount}-Color {categories.find(c => c.id === selectedCategory)?.label} Themes
+            {colorCount}-Color {categories.find(c => c.id === selectedCategory)?.label} 
+            {/* Themes */}
           </h3>
           <div className={`flex items-center space-x-2 text-sm transition-colors duration-300 ${
             isDarkMode ? 'text-gray-400' : 'text-gray-500'
@@ -460,10 +461,10 @@ const ColorThemes: React.FC<ColorThemesProps> = ({ searchTerm, favorites, onTogg
         </div>
 
         {/* Scrollable Themes Container */}
-        <div className={`max-h-[10000px] overflow-y-auto mb-8 pr-2 ${
+        <div className={`max-h-full overflow-y-auto mb-8 pr-2 ${
           isDarkMode ? 'scrollbar-dark' : 'scrollbar-light'
         } scrollbar-stable`}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-semibold">
             {filteredThemes.map((theme) => (
               <div
                 key={theme.id}
