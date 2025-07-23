@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Copy, Heart, Download, ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import { Helmet } from 'react-helmet-async';
 
 interface ColorGradientsProps {
   searchTerm: string;
@@ -410,6 +411,31 @@ const ColorGradients: React.FC<ColorGradientsProps> = ({ searchTerm, favorites, 
 
   return (
     <div className={`space-y-6 bg-background mt-16 ${isScrolling ? 'scrolling' : ''}`}>
+      <Helmet>
+  {/* --- Primary Meta Tags --- */}
+  <title>CSS Gradient Generator – ColorsMi</title>
+  <meta 
+    name="description" 
+    content="Create beautiful, custom CSS gradients with our advanced generator. Easily customize colors, angles, and export the code for your projects." 
+  />
+  <meta name="author" content="ColorsMi Team" />
+  <link rel="canonical" href="https://colorsmi.com/color-gradients" />
+
+  {/* --- Open Graph / Facebook --- */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://colorsmi.com/color-gradients" />
+  <meta property="og:title" content="CSS Gradient Generator – ColorsMi" />
+  <meta property="og:description" content="Create beautiful, custom CSS gradients with our advanced generator. Easily customize colors, angles, and export the code for your projects." />
+  {/* <meta property="og:image" content="https://colorsmi.com/og-image-gradients.png" /> */}
+
+  {/* --- Twitter --- */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://colorsmi.com/color-gradients" />
+  <meta name="twitter:title" content="CSS Gradient Generator – ColorsMi" />
+  <meta name="twitter:description" content="Create beautiful, custom CSS gradients with our advanced generator. Easily customize colors, angles, and export the code for your projects." />
+  <meta name="twitter:site" content="@colorsmi_app" />
+  {/* <meta name="twitter:image" content="https://colorsmi.com/og-image-gradients.png" /> */}
+</Helmet>
 
         <Navbar/>
       {/* Controls */}

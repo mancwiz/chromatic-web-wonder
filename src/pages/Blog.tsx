@@ -8,6 +8,7 @@ import { Search, Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { allBlogPosts } from "@/data/blogPosts";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +25,34 @@ const Blog = () => {
   });
 
   return (
+   <>
+
+   <Helmet>
+        {/* --- Primary Meta Tags --- */}
+        <title>Blog – Color Stories & Design Articles | ColorsMi</title>
+        <meta 
+          name="description" 
+          content="Explore the fascinating world of color through in-depth articles covering psychology, design principles, cultural significance, and practical applications." 
+        />
+        <meta name="author" content="ColorsMi Team" />
+        <link rel="canonical" href="https://colorsmi.com/blog" />
+
+        {/* --- Open Graph / Facebook --- */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://colorsmi.com/blog" />
+        <meta property="og:title" content="Blog – Color Stories & Design Articles | ColorsMi" />
+        <meta property="og:description" content="Explore the fascinating world of color through in-depth articles covering psychology, design principles, and practical applications." />
+        {/* You should create a general banner image for your blog page */}
+        {/* <meta property="og:image" content="https://colorsmi.com/og-image-blog.png" /> */}
+
+        {/* --- Twitter --- */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://colorsmi.com/blog" />
+        <meta name="twitter:title" content="Blog – Color Stories & Design Articles | ColorsMi" />
+        <meta name="twitter:description" content="Explore the fascinating world of color through in-depth articles covering psychology, design principles, and practical applications." />
+        <meta name="twitter:site" content="@colorsmi_app" />
+        {/* <meta name="twitter:image" content="https://colorsmi.com/og-image-blog.png" /> */}
+      </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <Navbar/>
       {/* Hero Section */}
@@ -157,6 +186,7 @@ const Blog = () => {
       </section>
       <Footer/>
     </div>
+   </>
   );
 };
 

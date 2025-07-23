@@ -6,6 +6,7 @@ import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen } from "lucide-react
 import { allBlogPosts } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import Navbar from "@/components/navbar";
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -23,6 +24,35 @@ const BlogPost = () => {
     .slice(0, 3);
 
   return (
+   <>
+   {/* ================================================================== */}
+      {/* START: DYNAMIC HELMET FOR SEO AND SOCIAL SHARING                 */}
+      {/* ================================================================== */}
+      <Helmet>
+        {/* --- Primary Meta Tags --- */}
+        <title>{`${post.title} – ColorsMi Blog`}</title>
+        <meta name="description" content={post.excerpt} />
+        <meta name="author" content={post.author} />
+        <link rel="canonical" href={`https://colorsmi.com/blog/${post.slug}`} />
+
+        {/* --- Open Graph / Facebook --- */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://colorsmi.com/blog/${post.slug}`} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.image} />
+
+        {/* --- Twitter --- */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`https://colorsmi.com/blog/${post.slug}`} />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={post.image} />
+        <meta name="twitter:site" content="@colorsmi_app" />
+      </Helmet>
+      {/* ================================================================== */}
+      {/* END: DYNAMIC HELMET                                              */}
+      {/* ================================================================== */}
     <div className="min-h-screen mt-10 bg-gradient-to-br from-background via-background to-muted/20">
         <Navbar/>
       {/* Header Image */}
@@ -180,6 +210,7 @@ const BlogPost = () => {
         </div>
       </article>
     </div>
+   </>
   );
 };
 

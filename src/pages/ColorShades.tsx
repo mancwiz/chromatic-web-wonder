@@ -7,6 +7,7 @@ import { MAIN_COLORS, generateColorShades } from '../utils/colorUtils';
 import ColorCard from '../components/ColorCard';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import { Helmet } from 'react-helmet-async';
 
 interface ColorShadesProps {
   isDarkMode: boolean;
@@ -100,7 +101,33 @@ const ColorShades: React.FC<ColorShadesProps> = ({ isDarkMode }) => {
   };
 
   return (
+    
     <div className={`m-4 mt-20 space-y-6 ${isScrolling ? 'scrolling' : ''} ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} `}>
+      <Helmet>
+  {/* --- Primary Meta Tags --- */}
+  <title>Color Shades Generator – ColorsMi</title>
+  <meta 
+    name="description" 
+    content="Instantly generate beautiful color shades, tints, and tones from any base hex color. Perfect for creating accessible and harmonious UI color palettes." 
+  />
+  <meta name="author" content="ColorsMi Team" />
+  <link rel="canonical" href="https://colorsmi.com/color-shades" />
+
+  {/* --- Open Graph / Facebook --- */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://colorsmi.com/color-shades" />
+  <meta property="og:title" content="Color Shades Generator – ColorsMi" />
+  <meta property="og:description" content="Instantly generate beautiful color shades, tints, and tones from any base hex color. Perfect for creating accessible and harmonious UI color palettes." />
+  {/* <meta property="og:image" content="https://colorsmi.com/og-image-shades.png" /> */}
+
+  {/* --- Twitter --- */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://colorsmi.com/color-shades" />
+  <meta name="twitter:title" content="Color Shades Generator – ColorsMi" />
+  <meta name="twitter:description" content="Instantly generate beautiful color shades, tints, and tones from any base hex color. Perfect for creating accessible and harmonious UI color palettes." />
+  <meta name="twitter:site" content="@colorsmi_app" />
+  {/* <meta name="twitter:image" content="https://colorsmi.com/og-image-shades.png" /> */}
+</Helmet>
       <Navbar/>
       <Card>
         <CardHeader>

@@ -72,7 +72,7 @@ const MovingTagline: React.FC<AnimatedWordsProps> = ({ className = "" }) => {
   }, []);
 
   return (
-    <span className={`text-foreground font-poppins text-[90px]  font-bold ${className}`}>
+    <span className={`text-foreground font-sans text-5xl md:text-7xl lg:text-[90px] leading-normal md:leading-normal  ${className}`}>
       Colors{" "}
       <span 
         className="bg-gradient-rainbow bg-clip-text text-transparent text-[90px] animate-gradient-move  ease-in-out cursor-pointer hover:scale-105 inline-block"
